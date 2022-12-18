@@ -1,0 +1,11 @@
+<hr>
+<div class="container">
+  <h2 class="text-center">Data-Binding-Assignment</h2>
+  <div>
+    <span><strong>User Name: </strong> </span><br>
+     <input type="text" [(ngModel)]="name" class="form-control"><br>
+    <p class="text-success"><strong>{{ name }}</strong></p>
+    <button [disabled]="!name" (click)="resetName()" class="btn btn-dark">Reset User</button>
+  </div>
+</div>
+<hr>

@@ -1,0 +1,18 @@
+
+<div class="container">
+  <h2 class="text-center">Directive-Assignment</h2>
+  <div>
+    <button (click)="isDisplay = true; isClick()" class="btn btn-info">
+      Display Details
+    </button>
+    <p *ngIf="isDisplay"><span>Your Name:</span>{{ name }}</p>
+    <p
+      *ngFor="let count of timeStamp"
+      [ngClass]="{ blue: count >= 5 }"
+      [ngStyle]="{ 'background-color': count <= 4 ? '#fcfbfa' : '' }"
+    >
+      {{ count }}
+    </p>
+  </div>
+</div>
+
