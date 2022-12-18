@@ -1,0 +1,26 @@
+h1 {
+  background-color: lightgrey;
+  color: blue;
+  text-align: center;
+  font-style: bold;
+  font-size: 24px;
+  font-family: Georgia;
+  letter-spacing: 1.6em;
+  word-spacing: 2em;
+}
+h2 {
+  font-family: Georgia;
+  color: darkred;
+  font-size: 18px;
+  letter-spacing: 1.4em;
+}
+div {
+  border: 2px solid black;
+  padding: 5px;
+  width: 1000px;
+  margin:500;
+}
+
+.ptag {
+  font-style: italic;
+}
