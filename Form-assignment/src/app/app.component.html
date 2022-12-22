@@ -1,0 +1,116 @@
+<h1 class="text-center text-success">Question1</h1>
+<div class="container">
+  <form class="row g-3" [formGroup]="myForm">
+    <div class="col-sm-10">
+      <label for="inputEmail4" class="form-label"><strong>Email:</strong></label>
+      <input
+        type="email"
+        name="mail"
+        formControlName="mail"
+        class="form-control"
+        id="inputEmail4"
+      
+        placeholder="Email"
+        required
+      />
+      <div
+        style="color: red"
+        *ngIf="
+          myForm.controls['mail'].touched && myForm.controls['mail'].invalid
+        "
+      >
+        <span *ngIf="myForm.controls['mail'].hasError('required')"
+          >email is required</span
+        >
+        <!-- <span *ngIf="myForm.controls['mail'].hasError('pattern')"
+          >inavlid email</span
+        > -->
+        <span
+          *ngIf="
+            myForm.controls['mail'].touched &&
+            myForm.controls['mail'].invalid &&
+            !myForm.controls['mail'].hasError('required')
+          "
+          >Invalid Email</span
+        >
+      </div>
+    </div>
+
+    <div class="col-sm-10">
+      <label for="inputPassword4" class="form-label"><strong> Password</strong></label>
+      <input
+        name="password`"
+        type="password"
+        formControlName="password"
+        class="form-control"
+        id="inputPassword4"
+       placeholder="Password"
+        required
+      />
+
+      <div
+        style="color: red"
+        *ngIf="
+          myForm.controls['password'].touched &&
+          myForm.controls['password'].invalid
+        "
+      >
+        <span *ngIf="myForm.controls['password'].hasError('required')"
+          >Password is required</span
+        >
+        <span *ngIf="myForm.controls['password'].hasError('pattern')"
+          >inavlid Password</span
+        >
+      </div>
+    </div>
+
+    <div class="col-sm-10">
+      <label class="form-label"><strong> Subscription:</strong></label>
+      <select
+        name="subscription"
+        formControlName="subscription"
+        class="form-select form-control"
+        required
+      >
+    
+        <option value="">Select Subscription</option>
+        <option value="Basic">Basic</option>
+        <option value="Advance">Advance</option>
+        <option value="Pro">Pro</option></select
+      >
+      <span style="color: red;" *ngIf="myForm.controls['subscription'].touched && myForm.controls['subscription'].hasError('required')">
+        Subscription is required
+       </span>
+      <br />
+    </div>
+
+    <div col-sm-10>
+      <button class="btn btn-dark col-12" value="submit" (click)="insertData()">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+<br /><br />
+<div class="container">
+  <button class="btn btn-danger" (click)="check = true">View Data</button>
+</div>
+<br /><br />
+<div class="container" *ngIf="check">
+  <table class="table table-hover table-striped">
+    <thead>
+      <th scope="col">Mail</th>
+      <th scope="col">Subscription</th>
+      <th scope="col">Password</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of emp">
+        <td>{{ e.mail }}</td>
+        <td>{{ e.subscription }}</td>
+        <td>{{ e.password }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<hr>
+<app-question2></app-question2>

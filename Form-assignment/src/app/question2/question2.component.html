@@ -1,0 +1,82 @@
+<h1 class="text-center text-primary">Question2</h1>
+<div class="container">
+  <form class="row g-3" [formGroup]="q2Form" (ngSubmit)="onSubmit()">
+
+    <div class="col-sm-10">
+        <label for="inputEmail4" class="form-label"><strong>Project Name:</strong></label>
+        <input
+            type="text"
+            name="projectName"
+            formControlName="projectName"
+            class="form-control"
+            id="inputEmail4"
+          
+            placeholder="projectName"
+            required
+          />
+          <div style="color: red"
+          *ngIf="
+            q2Form.controls['projectName'].touched && q2Form.controls['projectName'].invalid
+          ">
+          <span *ngIf="q2Form.controls['projectName'].hasError('required')"
+          >Project Name is required</span
+        >
+          </div>
+        </div>
+
+    <div class="col-sm-10">
+    <label for="inputEmail4" class="form-label"><strong>Email:</strong></label>
+    <input
+        type="email"
+        name="email"
+        formControlName="email"
+        class="form-control"
+        id="inputEmail4"
+        placeholder="Email"
+        required
+      />
+      <div
+      style="color: red"
+      *ngIf="
+        q2Form.controls['email'].touched && q2Form.controls['email'].invalid 
+      "
+    >
+      <span *ngIf="q2Form.controls['email'].hasError('required')"
+        >email is required</span
+      >
+      <span
+          *ngIf="
+            q2Form.controls['email'].touched &&
+            q2Form.controls['email'].invalid &&
+            !q2Form.controls['email'].hasError('required')
+          "
+          >Invalid Email</span
+        >
+      </div>
+    </div>
+    <div class="col-sm-10">
+        <label class="form-label"><strong>Project Status:</strong></label>
+        <select
+          name="projectStatus"
+          formControlName="projectStatus"
+          class="form-select form-control"
+          required
+        >
+        
+          <option value="">Select Status</option>
+          <option value="Stable">Stable</option>
+          <option value="Critical">Critical</option>
+          <option value="Finished">Finished</option></select
+        >
+        <span style="color: red;" *ngIf="q2Form.controls['projectStatus'].touched && q2Form.controls['projectStatus'].hasError('required')">
+         project Status is required
+        </span>
+        <br />
+      </div>
+      <div col-sm-10>
+       <input type="submit" value="submit" class="btn btn-danger">
+      </div>
+
+  </form>
+
+</div>
