@@ -1,0 +1,111 @@
+
+<div class="form">
+    <h1 style="text-align: center;">Registration Form</h1>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter FullName</mat-label>
+
+      <input type="text" matInput placeholder="Full Name" formControlName="fullName" name="fullName" />
+      <mat-error *ngIf="this.myForm.controls['fullName'].hasError('pattern')  && !this.myForm.controls['fullName'].hasError('required')">
+        *Invalid Name
+      </mat-error>
+      <mat-error *ngIf="this.myForm.controls['fullName'].hasError('required')">
+        *Name required
+      </mat-error>
+      <mat-error *ngIf="this.myForm.controls['fullName'].hasError('minlength')">
+        *minimum length 6 
+      </mat-error>
+      <mat-error *ngIf="this.myForm.controls['fullName'].hasError('maxlength')">
+        *max length 32
+      </mat-error>
+       </mat-form-field>
+
+       <mat-form-field appearance="fill" class="ipclass">
+        <mat-label>Enter your MobileNo</mat-label>
+        <mat-icon matIconSuffix>phoneno</mat-icon>
+        <input type="text" matInput placeholder="Mobile No" formControlName="mobileNo" name="mobileNo">
+        <mat-error *ngIf="this.myForm.controls['mobileNo'].hasError('pattern') && !this.myForm.controls['mobileNo'].hasError('required')">
+            Enter valid Mobile No
+          </mat-error>
+          <mat-error *ngIf="this.myForm.controls['mobileNo'].hasError('required')">
+            Mobile No is <strong>required</strong>
+          </mat-error>
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter E-mail </mat-label>
+      <mat-icon matIconSuffix>email</mat-icon>
+      <input type="email" matInput placeholder="E-mail" name="emailId" formControlName="emailId"/>
+      <mat-error *ngIf="this.myForm.controls['emailId'].hasError('email') &&!this.myForm.controls['emailId'].hasError('required')">
+        *Invalid E-mail
+      </mat-error>
+      <mat-error *ngIf="this.myForm.controls['emailId'].hasError('required')">
+        *E-mail required
+      </mat-error>
+      </mat-form-field>
+
+    <mat-form-field appearance="fill" class="ipclass">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" name="password" formControlName="password"/>
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+        type="button"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button> 
+      <mat-error *ngIf="this.myForm.controls['password'].hasError('pattern') ||this.myForm.controls['password'].hasError('minlength') && !this.myForm.controls['password'].hasError('required')">
+        *invalid Password
+      </mat-error>
+      <mat-error *ngIf="this.myForm.controls['password'].hasError('required')">*Password required</mat-error>
+      <mat-error *ngIf="this.myForm.controls['password'].hasError('minlength')">
+        *minimum length 6 
+      </mat-error>
+      <mat-error *ngIf="this.myForm.controls['password'].hasError('maxlength')">
+        *max length 12
+      </mat-error>
+      </mat-form-field
+    >
+   <br>
+    <mat-label><strong>Select Gender</strong> </mat-label>
+    <mat-radio-group formControlName="gender" name="gender">
+      <mat-radio-button value="M">M</mat-radio-button>
+     <mat-icon matIconSuffix>male</mat-icon>
+      <mat-radio-button value="F">F</mat-radio-button>
+      <mat-icon matIconSuffix>female</mat-icon>
+      <mat-error *ngIf="this.myForm.controls['gender'].hasError('required')">
+        *Gender required
+      </mat-error>
+    </mat-radio-group><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Select DOB</mat-label>
+      <input matInput [matDatepicker]="picker" name="dateofbirth" formControlName="dateofbirth"/>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="this.myForm.controls['dateofbirth'].hasError('required')">
+        *DOB required
+      </mat-error>
+    </mat-form-field><br>
+  <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Select Skill</mat-label>
+        <mat-select formControlName="skills" name="skills">
+          <mat-option value="Angular Basic">Angular Basic</mat-option>
+          <mat-option value="Angular intermediate">Angular intermediate</mat-option>
+          <mat-option value="Angular Advance">Angular Advance</mat-option>
+          
+        </mat-select>
+        <mat-error *ngIf="this.myForm.controls['skills'].hasError('required')">
+            *Skills required
+          </mat-error>
+      </mat-form-field><br>
+      <button mat-raised-button color="accent" type="submit" value="submit" style="text-align: center;">Submit</button>
+  </form>
+</div> 
