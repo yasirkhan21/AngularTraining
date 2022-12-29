@@ -1,0 +1,19 @@
+.form{
+    border: 2px solid whitesmoke;
+    border-radius:25px;
+    margin: auto;
+    padding-left: 40px;
+    height: auto;
+    margin-top: 10px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    background-image: url("https://warm-naiad-cf0694.netlify.app/demo-images/light.jpg");
+    width: 600px;
+}
+.ipclass{
+    padding-left: 15px;
+}
+
+mat-form-field{
+    width: 250px;
+}

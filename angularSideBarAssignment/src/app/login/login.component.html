@@ -1,0 +1,67 @@
+
+<div class="login">
+    <h1 style="padding-top: 10px;margin-left:55px;"><strong>Login here</strong></h1>
+    <form [formGroup]="loginForm">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter User Name </mat-label>
+            <mat-icon matIconSuffix>account_circle</mat-icon>
+            <input
+            type="text"
+            matInput
+            placeholder="User Name"
+            formControlName="userName"
+            name="userName"
+            />
+           <mat-error *ngIf="this.loginForm.controls['userName'].hasError('required')"> 
+            *UserName required
+           </mat-error>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill" class="ipclass">
+            <mat-label>Enter your password</mat-label>
+            <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            name="password"
+            formControlName="password"
+            />
+            <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+            type="button"
+            >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error
+        *ngIf="
+          this.loginForm.controls['password'].hasError('pattern') &&
+          !this.loginForm.controls['password'].hasError('required')
+        "
+      >
+        *invalid Password
+      </mat-error>
+      <mat-error *ngIf="this.loginForm.controls['password'].hasError('required')"
+        >*Password required</mat-error
+      >
+      <mat-error *ngIf="this.loginForm.controls['password'].hasError('minlength')">
+        *minimum length 6
+      </mat-error>
+      <mat-error *ngIf="this.loginForm.controls['password'].hasError('maxlength')">
+        *max length 12
+      </mat-error>
+    </mat-form-field><br>
+    <button
+    mat-raised-button
+    color="accent"
+    type="submit"
+    value="submit"
+    (click)="login()"
+    >
+    Login
+</button>
+</form><br>
+ <p>If you don't have an account <a href="/register">Register here</a></p>
+</div>

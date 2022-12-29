@@ -1,0 +1,66 @@
+<div>
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav #sidenav>
+  
+    <mat-nav-list (click)="sidenav.close()">
+    
+      <a mat-list-item >
+        <mat-icon mat-button matTextPrefix>list</mat-icon> 
+        <span>Course List</span>
+      </a>
+      
+      <!-- <div>
+        <mat-selection-list #coursesselect>
+
+          <mat-list-option *ngFor="let course of courses">
+    
+            {{course}}
+    
+          </mat-list-option>
+    
+          <p>
+    
+            Options Selected: {{coursesselect.selectedOptions.selected.length}}
+    
+          </p>
+    
+    
+    
+        </mat-selection-list>
+    
+      </div> -->
+      <ul>
+        <li *ngFor="let i of courses">{{i}}</li>
+      </ul>
+ 
+      <a mat-list-item>
+      <mat-icon ></mat-icon>
+        <a>Add new Courses</a>
+      </a>
+    </mat-nav-list>
+
+    
+  </mat-sidenav>
+
+<mat-toolbar color="accent">
+  <button mat-icon-button (click)="sidenav.open()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a mat-button routerLink=""> <mat-icon>home</mat-icon> Home </a>
+  <a mat-button routerLink="login" routerLinkActive="active"> <mat-icon>account_circle</mat-icon> Login </a>
+  <a mat-button routerLink="register" routerLinkActive="active"> <mat-icon>person_add</mat-icon> Register </a>
+  <a mat-button [matMenuTriggerFor]="dropdown">About us</a>
+
+  <mat-menu #dropdown>
+    <button mat-menu-item routerLink="ceo-message" routerLinkActive="active">CEO Message</button>
+
+    <button mat-menu-item routerLink="contact-details" routerLinkActive="active">Contact details</button>
+  </mat-menu>
+</mat-toolbar>
+<router-outlet></router-outlet>
+</mat-sidenav-container>
+</div>
+<div class="home">
+  <h1 style="text-align: center;"><strong>Welcom to Yash Technologies Pvt Ltd Indore(M.P)</strong></h1>
+  </div>

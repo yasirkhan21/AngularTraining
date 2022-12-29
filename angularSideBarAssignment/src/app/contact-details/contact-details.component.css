@@ -1,0 +1,11 @@
+.contactdetails{
+    margin-left: 200px;
+    border: 2px solid blue;
+    border-radius: 10px;
+    width: 400px;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+mat-form-field{
+    width: 250px;
+}
