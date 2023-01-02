@@ -1,0 +1,21 @@
+h1 {
+  text-align: center;
+}
+.ceomassage {
+  width: 400px;
+  margin-left: 50px;
+}
+.float-container{
+    overflow: hidden;
+    scrollbar-width: none;
+}
+.float-child {
+    position: relative;
+}
+.float-child1 {
+    position: relative;
+    bottom: 258px;
+    left: 196px;
+    padding-right: 185px;
+   
+}

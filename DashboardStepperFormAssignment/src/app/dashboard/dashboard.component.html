@@ -1,0 +1,249 @@
+<mat-drawer-container class="example-container" autosize>
+  <div class="example-sidenav-content">
+    <h1 *ngIf="!showFiller" style="text-align: center">
+      <strong>Welcome to Dashboard</strong>
+    </h1>
+    <div *ngIf="showFiller" class="basic">
+      <h1 style="text-align: center"><strong>Registration Form</strong></h1>
+      <mat-stepper #stepper>
+        <mat-step [stepControl]="basicInfo" errorMessage="Baisc information is required.">
+          <form [formGroup]="basicInfo">
+            <ng-template matStepLabel
+              > <mat-icon>info</mat-icon> Fill out your basic information
+              <br></ng-template
+            > 
+            <mat-form-field appearance="fill">
+              <mat-label>Name</mat-label>
+              <input
+                matInput
+                placeholder="Last name, First name"
+                formControlName="name"
+                required
+              />
+              <mat-error *ngIf="this.basicInfo.controls['name'].hasError('pattern')">
+                *Invalid Name
+              </mat-error>
+              <mat-error *ngIf="this.basicInfo.controls['name'].hasError('required')">
+                *Name required
+              </mat-error>
+              <mat-error *ngIf="this.basicInfo.controls['name'].hasError('minlength') || this.basicInfo.controls['name'].hasError('maxlength')">
+                Name min length 6 & max length 32
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="ipclass">
+              <mat-label>Email-Id</mat-label>
+              <mat-icon matIconSuffix>email</mat-icon>
+              <input
+                matInput
+                placeholder="Email-Id"
+                formControlName="emailId"
+                required
+              />
+              <mat-error *ngIf="this.basicInfo.controls['emailId'].hasError('email')">
+                *Invalid EmailId
+              </mat-error>
+              <mat-error *ngIf="this.basicInfo.controls['emailId'].hasError('required')">
+                *EmailId required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="ipclass">
+              <mat-label>Father's Name</mat-label>
+              <input
+                matInput
+                placeholder="Father's Name"
+                formControlName="fathersName"
+                required
+              />
+              <mat-error *ngIf="this.basicInfo.controls['fathersName'].hasError('required')">
+                *Father's Name required
+              </mat-error>
+              <mat-error *ngIf="this.basicInfo.controls['fathersName'].hasError('minlength') || this.basicInfo.controls['fathersName'].hasError('maxlength')">
+                *Father's Name min length 6 & max length 32
+              </mat-error>
+            </mat-form-field><br>
+            <mat-form-field appearance="fill">
+              <mat-label>Mother's Name</mat-label>
+              <input
+                matInput
+                placeholder="Mother's Name"
+                formControlName="mothersName"
+                required
+              />
+              <mat-error *ngIf="this.basicInfo.controls['mothersName'].hasError('required')">
+                *Mother's Name required
+              </mat-error>
+              <mat-error *ngIf="this.basicInfo.controls['mothersName'].hasError('minlength') || this.basicInfo.controls['mothersName'].hasError('maxlength')">
+                *Mother's Name min length 6 & max length 32
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="ipclass">
+                <mat-label>Mobile No</mat-label>
+                <mat-icon matIconSuffix>phone</mat-icon>
+                <input
+                  matInput
+                  placeholder="Mobile No"
+                  formControlName="mobileNo"
+                  required
+                />
+                <mat-error
+        *ngIf="
+          this.basicInfo.controls['mobileNo'].hasError('pattern') &&
+          !this.basicInfo.controls['mobileNo'].hasError('required')
+        "
+      >
+        Enter valid Mobile No
+      </mat-error>
+      <mat-error *ngIf="this.basicInfo.controls['mobileNo'].hasError('required')">
+        *Mobile No is required
+      </mat-error>
+              </mat-form-field><br>
+
+            <mat-label><strong>Select Gender</strong> </mat-label>
+            <mat-radio-group formControlName="gender" name="gender">
+              <mat-radio-button value="M">M</mat-radio-button>
+              <mat-icon matIconSuffix>male</mat-icon>
+              <mat-radio-button value="F">F</mat-radio-button>
+              <mat-icon matIconSuffix>female</mat-icon>
+              <mat-error *ngIf="this.basicInfo.controls['gender'].hasError('required')">
+                *Gender required
+              </mat-error>
+            </mat-radio-group><br>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Select DOB</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                name="dateofbirth"
+                formControlName="dob"
+              />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error
+              *ngIf="this.basicInfo.controls['dob'].hasError('required')"
+            >
+              *DOB required
+            </mat-error>
+            </mat-form-field><br>
+
+            <div>
+              <button mat-button matStepperNext color="primary">Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step [stepControl]="bankInfo">
+          <form [formGroup]="bankInfo">
+            <ng-template matStepLabel
+              ><mat-icon>account_balance</mat-icon> Fill out your Bank information(optional)</ng-template
+            ><br>
+            <mat-form-field appearance="fill">
+              <mat-label>Full Name</mat-label>
+              <input
+                matInput
+                formControlName="fullName"
+                placeholder="fullName"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="ipclass">
+              <mat-label>Account Number</mat-label>
+              <input
+                type="number"
+                matInput
+                formControlName="accountNo"
+                placeholder="Account Number"
+              />
+            </mat-form-field><br>
+            <mat-form-field appearance="fill">
+                
+              <mat-label>Bank Name</mat-label>
+              
+              <input matInput formControlName="bankName" placeholder="Bank" />
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="ipclass">
+              <mat-label>IFSC code</mat-label>
+              <input matInput formControlName="ifscCode" placeholder="IFSC" />
+            </mat-form-field><br>
+
+            <mat-label><strong>Have you internet banking</strong> </mat-label>
+            <mat-radio-group formControlName="internetBanking">
+              <mat-radio-button value="Yes">Yes</mat-radio-button>
+              <mat-icon matIconSuffix></mat-icon>
+              <mat-radio-button value="No">No</mat-radio-button>
+              <mat-icon matIconSuffix></mat-icon>
+            </mat-radio-group><br>
+
+            <mat-label><strong>Have you Mobile banking</strong> </mat-label>
+            <mat-radio-group formControlName="mobileBanking">
+              <mat-radio-button value="Yes">Yes</mat-radio-button>
+              <mat-icon matIconSuffix></mat-icon>
+              <mat-radio-button value="No">No</mat-radio-button>
+              <mat-icon matIconSuffix></mat-icon>
+            </mat-radio-group><br>
+
+            <div>
+              <button mat-button matStepperPrevious color="primary">Back</button>
+              <button mat-button matStepperNext color="primary">Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step [stepControl]="address" errorMessage="Address is required.">
+          <form [formGroup]="address">
+            <ng-template matStepLabel><mat-icon>place</mat-icon> Communication Address</ng-template><br>
+            <mat-form-field appearance="fill" class="textArea">
+              <mat-label>Present Address</mat-label>
+              <mat-icon matIconSuffix> my_location</mat-icon>
+              <textarea
+                matInput
+                placeholder="present"
+                formControlName="presentAdd"
+                required
+              ></textarea>
+              <span>{{address.value['presentAdd'].length}}/{{totalWord}}</span>
+              <mat-error *ngIf="this.address.controls['presentAdd'].hasError('required')">
+                *Present address required
+              </mat-error>
+              <mat-error *ngIf="this.address.controls['presentAdd'].hasError('maxlength')">
+                *max length exceed
+              </mat-error>
+            </mat-form-field><br>
+            <mat-form-field appearance="fill">
+              <mat-label>Permanent Address</mat-label>
+              <mat-icon matIconSuffix> place</mat-icon>
+              <textarea
+                matInput
+                placeholder="present"
+                formControlName="permanentAdd"
+              ></textarea>
+              <span>{{address.value.permanentAdd.length}}/{{totalWord}}</span>
+              <mat-error *ngIf="this.address.controls['permanentAdd'].hasError('required')">
+                *Permanent address required
+              </mat-error>
+              <mat-error *ngIf="this.address.controls['permanentAdd'].hasError('maxlength')">
+                *max length exceed
+              </mat-error>
+            </mat-form-field>
+             <div>
+            <button mat-button  matStepperPrevious color="primary">Back</button>
+            <button    mat-raised-button type="submit" (click)="onDataSubmit()" color="accent">Submit</button>
+          </div>
+          </form>
+        </mat-step>
+       
+      </mat-stepper>
+    </div>
+  </div>
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+    <h2>User Dashboard</h2>
+
+    <button (click)="showFiller = !showFiller" mat-raised-button color="warn">
+      Register
+    </button>
+  </mat-drawer>
+</mat-drawer-container>
