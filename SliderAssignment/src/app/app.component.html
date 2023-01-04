@@ -1,0 +1,44 @@
+<h1 style="text-align: center;margin-top: 20px;"><strong>Slider Assignment</strong></h1>
+<hr>
+<mat-card>
+  <mat-card-content>
+  <h2>Slider Inputs:</h2>
+    <mat-form-field appearance="fill">
+      <mat-label>Value</mat-label>
+      <input matInput type="number" [(ngModel)]="value">
+    </mat-form-field>
+    <mat-form-field  appearance="fill">
+      <mat-label>Min value</mat-label>
+      <input matInput type="number" [(ngModel)]="min">
+    </mat-form-field>
+    <mat-form-field  appearance="fill">
+      <mat-label>Max value</mat-label>
+      <input matInput type="number" [(ngModel)]="max">
+    </mat-form-field>
+    <mat-form-field  appearance="fill">
+      <mat-label>Step size</mat-label>
+      <input matInput type="number" [(ngModel)]="step">
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>
+<br><br>
+<mat-card>
+  <mat-card-content>
+    <h2>Slider Result</h2>
+    <div>
+      <mat-label><strong>Value:</strong></mat-label>
+      <span><strong>{{value}}</strong></span>
+    </div><br><br>
+    <mat-slider
+    [max]="max"
+    [min]="min"
+    [step]="step"
+    discrete color="warn">
+    <input matSliderThumb [(ngModel)]="value">
+  </mat-slider><br>
+  <mat-icon mat-button (click) = "rmval()" matIconSuffix>remove</mat-icon>
+
+  <mat-icon  mat-button (click) = "setVal()" matIconSuffix class="add">add</mat-icon>
+
+  </mat-card-content>
+</mat-card>
